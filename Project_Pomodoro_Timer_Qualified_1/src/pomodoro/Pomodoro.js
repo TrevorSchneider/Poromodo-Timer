@@ -69,50 +69,52 @@ function Pomodoro() {
   }
 
   return (
-    <div className="pomodoro">
-      <div className="row">
-        <div className="col">
-          <Duration
-            type="Focus"
-            time={session.Focus}
-            setTime={handleDurationChange}
-            high={60}
-            low={5}
-            inSession={session.inSession}
-            increment={5}
-          />
-        </div>
-        <div className="col">
-          <div className="float-right">
+    <>
+      <div className="pomodoro">
+        <div className="row">
+          <div className="col">
             <Duration
-              type="Break"
-              time={session.Break}
+              type="Focus"
+              time={session.Focus}
               setTime={handleDurationChange}
-              high={15}
-              low={1}
+              high={60}
+              low={5}
               inSession={session.inSession}
-              increment={1}
+              increment={5}
             />
           </div>
+          <div className="col">
+            <div className="float-right">
+              <Duration
+                type="Break"
+                time={session.Break}
+                setTime={handleDurationChange}
+                high={15}
+                low={1}
+                inSession={session.inSession}
+                increment={1}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="row">
-        <Play
+        <div className="row">
+          <Play
+            isTimerRunning={session.running}
+            playPause={playPause}
+            resetSession={resetSession}
+            inSession={session.inSession}
+          />
+        </div>
+        <Timer
+          focusTime={session.Focus}
+          breakTime={session.Break}
+          remainingTime={session.remaining}
           isTimerRunning={session.running}
-          playPause={playPause}
-          resetSession={resetSession}
           inSession={session.inSession}
+          currentSession={session.currentSession}
         />
       </div>
-      <Timer
-        focusTime={session.Focus}
-        breakTime={session.Break}
-        remainingTime={session.remaining}
-        isTimerRunning={session.running}
-        inSession={session.inSession}
-        currentSession={session.currentSession}
-      />
-    </div>
+    </>
   );
 }
 

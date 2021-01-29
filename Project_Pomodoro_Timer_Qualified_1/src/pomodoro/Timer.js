@@ -16,7 +16,7 @@ function Timer({
 
   if (inSession) {
     return (
-      <div>
+      <>
         {/* TODO: This area should show only when a focus or break session is running or pauses */}
         <div className="row mb-2">
           <div className="col">
@@ -45,7 +45,7 @@ function Timer({
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   } else {
     return null;
